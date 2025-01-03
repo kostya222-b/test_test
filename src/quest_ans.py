@@ -52,7 +52,7 @@ def find_answers(quest, text):
                         cleaned_i = cleaned_i[2:].strip()
                         true_answers_list.append(cleaned_i)
         else:
-            raise HTTPException(status_code=404, detail='Нет такого вопроса')
+            break
     return true_answers_list
 
 @app.get('/test')
