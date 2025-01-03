@@ -66,12 +66,9 @@ async def test(quest: str = None):
     true_answers_list = find_answers(text, quest)
 
     if not true_answers_list:
-        quest = quest.replace('a', 'а').replace('o', 'о')
-        true_answers_list = find_answers(text, quest)
-
-    if not true_answers_list:
-        quest = quest.replace('а', 'a').replace('о', 'o')
-        true_answers_list = find_answers(text, quest)
+        quest_lower = quest.lower()
+        text_lower = text.lower()
+        true_answers_list = find_answers(text_lower, quest_lower)
 
     if not true_answers_list:
         raise HTTPException(status_code=404, detail='Нет такого вопроса')
